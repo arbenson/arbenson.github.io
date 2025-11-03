@@ -1,700 +1,437 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    
-    <meta name="Austin R. Benson" content="">
     <title>Austin R. Benson</title>
-    <!-- Nunito Sans font -->
-    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Patrick+Hand+SC" rel="stylesheet">
-    <!-- icons -->    
-    <link href="css/icon.css" rel="stylesheet">
-    <!-- Overriding personal style -->
-    <link href="css/style.css" rel="stylesheet">    
-  </head>
 
-  <body>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+            color: #111;
+            line-height: 1.7;
+            background: #fffff8;
+            font-size: 17px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 24px;
+        }
+
+        header {
+            margin-bottom: 32px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 24px;
+        }
+
+        .profile-section {
+            display: flex;
+            gap: 40px;
+            align-items: flex-start;
+        }
+
+        .profile-image {
+            flex-shrink: 0;
+        }
+
+        .profile-image img {
+            width: 180px;
+            height: 180px;
+            border-radius: 4px;
+            object-fit: cover;
+            border: 1px solid #ccc;
+        }
+
+        .profile-info h1 {
+            font-size: 32px;
+            font-weight: 700;
+            color: #111;
+            margin-bottom: 8px;
+        }
+
+        .profile-info .subtitle {
+            font-size: 18px;
+            color: #555;
+            margin-bottom: 4px;
+            font-style: italic;
+        }
+
+        .profile-info .location {
+            font-size: 16px;
+            color: #777;
+            margin-bottom: 20px;
+        }
+
+        .contact-links {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .contact-links a {
+            color: #0645ad;
+            text-decoration: none;
+            font-size: 15px;
+        }
+
+        .contact-links a:hover {
+            color: #0b0080;
+        }
+
+        section {
+            margin-bottom: 40px;
+        }
+
+        h2 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #111;
+            margin-bottom: 20px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .bio-section {
+            font-size: 17px;
+            color: #111;
+        }
+
+        .bio-section p {
+            margin-bottom: 16px;
+        }
+
+        .bio-section strong {
+            font-weight: 700;
+            color: #111;
+        }
+
+        .bio-section ul {
+            margin: 0 0 16px 0;
+            padding-left: 0;
+            list-style: none;
+        }
+
+        .bio-section ul li {
+            margin-bottom: 8px;
+            padding-left: 20px;
+        }
+
+        a {
+            color: #0645ad;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #0b0080;
+        }
+
+        .publications ol {
+            list-style: none;
+            counter-reset: publication-counter;
+            padding-left: 0;
+        }
+
+        .publications li {
+            counter-increment: publication-counter;
+            margin-bottom: 20px;
+            padding-left: 32px;
+            position: relative;
+        }
+
+        .publications li:before {
+            content: counter(publication-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-weight: 700;
+            color: #555;
+            font-size: 15px;
+        }
+
+        .pub-title {
+            font-weight: 700;
+            color: #111;
+            margin-bottom: 4px;
+            line-height: 1.4;
+        }
+
+        .pub-authors {
+            color: #555;
+            font-size: 16px;
+            margin-bottom: 4px;
+        }
+
+        .pub-venue {
+            color: #555;
+            font-style: italic;
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+
+        .pub-links {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .pub-link {
+            display: inline-block;
+            padding: 3px 10px;
+            font-size: 13px;
+            border-radius: 3px;
+            text-decoration: none;
+            font-weight: 500;
+            border: 1px solid;
+        }
+
+        .pub-link.pdf {
+            background: #f9fafb;
+            color: #374151;
+            border-color: #d1d5db;
+        }
+
+        .pub-link.pdf:hover {
+            background: #f3f4f6;
+        }
+
+        .pub-link.code {
+            background: #eff6ff;
+            color: #1e40af;
+            border-color: #bfdbfe;
+        }
+
+        .pub-link.code:hover {
+            background: #dbeafe;
+        }
+
+        .pub-link.data {
+            background: #f0fdf4;
+            color: #166534;
+            border-color: #bbf7d0;
+        }
+
+        .pub-link.data:hover {
+            background: #dcfce7;
+        }
+
+        .pub-link.supplement {
+            background: #faf5ff;
+            color: #6b21a8;
+            border-color: #e9d5ff;
+        }
+
+        .pub-link.supplement:hover {
+            background: #f3e8ff;
+        }
+
+        .pub-link.poster {
+            background: #fef3c7;
+            color: #92400e;
+            border-color: #fde68a;
+        }
+
+        .pub-link.poster:hover {
+            background: #fde047;
+        }
+
+        footer {
+            margin-top: 80px;
+            padding-top: 40px;
+            border-top: 1px solid #e5e7eb;
+            color: #6b7280;
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 40px 20px;
+            }
+
+            .profile-section {
+                flex-direction: column;
+                gap: 24px;
+            }
+
+            .profile-image img {
+                width: 140px;
+                height: 140px;
+            }
+
+            .profile-info h1 {
+                font-size: 28px;
+            }
+
+            .contact-links {
+                flex-direction: column;
+                gap: 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
     <div class="container">
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-	<a class="navbar-brand" href="#">Austin R. Benson</a>
-      </nav>
+        <header>
+            <div class="profile-section">
+                <div class="profile-image">
+                    <img src="images/arb-2025-small.jpg" alt="Austin R. Benson">
+                </div>
+                <div class="profile-info">
+                    <h1>Austin R. Benson</h1>
+                    <div class="subtitle">Quant Researcher</div>
+                    <div class="location">New York City</div>
+                    <div class="contact-links">
+                        <a href="mailto:arbenson@gmail.com">arbenson@gmail.com</a>
+                        <a href="cv/cv.pdf">CV / Resume</a>
+                        <a href="https://scholar.google.com/citations?user=BzOqNoQAAAAJ&hl=en">Google Scholar</a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <section class="bio-section">
+                <p>
+                    <strong>Quant Finance.</strong> Since 2021, I have been a quant finance researcher. Most recently, I was in the systematic equities group at DE Shaw (2021-2025, VP 24-25), and I'm currently on a non-compete period before joining a new firm in fall 2026.
+                </p>
+
+                <p>
+                    <strong>Academia.</strong> Before finance, I spent four years in the Department of Computer Science at Cornell University, serving as an Assistant Professor for three years following a one-year postdoc. My research focused on designing numerical methods and algorithmic frameworks to enable new, better, and bigger analyses of complex data. These articles highlight the main ideas of this research:
+                </p>
+                <ul>
+                    <li><a href="https://www.quantamagazine.org/how-big-data-carried-graph-theory-into-new-dimensions-20210819/">How Big Data Carried Graph Theory Into New Dimensions</a>, Quanta Magazine</li>
+                    <li><a href="https://www.siam.org/publications/siam-news/articles/higher-order-network-analysis-takes-off-fueled-by-old-ideas-and-new-data">Higher-order Network Analysis Takes Off, Fueled by Old Ideas and New Data</a>, SIAM News</li>
+                </ul>
+
+                <p>
+                    This work was recognized with an NSF CAREER Award, a KDD best paper award, a JP Morgan Chase AI Faculty Award, and the Gene Golub Doctoral Dissertation Award, and was supported by federal research grants from the Army Research Office and the NSF. I published in leading venues including Science, Science Advances, PNAS, and SIAM Review, as well as top machine learning and data science conferences like NeurIPS, ICML, ICLR, KDD, and WWW. I also taught courses spanning data science, machine learning, network science, matrix computations, and numerical optimization. Throughout this, I mentored postdocs, PhD students, and undergraduate researchers who have gone on to faculty positions, industry roles at companies like Meta and Microsoft Research, and top PhD programs.
+                </p>
+
+                <p>
+                    <strong>Education.</strong> Prior to Cornell, I spent nine formative years in the Bay Area, where I completed my PhD and MS in computational mathematics at Stanford University and my BS in EECS and BA in applied math at UC Berkeley. During summers, I interned at Google four times, as well as at Sandia National Laboratories and HP Labs, gaining experience across industry research and large-scale systems.
+                </p>
+            </section>
+
+            <section class="publications">
+                <h2>Selected Publications</h2>
+                <p style="margin-bottom: 20px; color: #555;">A complete list of publications is available in my <a href="cv/cv.pdf">CV</a>.</p>
+                <ol>
+                    <li>
+                        <div class="pub-title">Higher-order organization of complex networks</div>
+                        <div class="pub-authors">Austin R. Benson, David F. Gleich, Jure Leskovec</div>
+                        <div class="pub-venue">Science, 2016</div>
+                        <div class="pub-links">
+                            <a href="papers/higher-order-science2016.pdf" class="pub-link pdf">PDF</a>
+                            <a href="papers/higher-order-SM-science2016.pdf" class="pub-link supplement">Supplement</a>
+                            <a href="http://snap.stanford.edu/higher-order/code.html" class="pub-link code">Code</a>
+                            <a href="http://snap.stanford.edu/higher-order/data.html" class="pub-link data">Data</a>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="pub-title">Simplicial closure and higher-order link prediction</div>
+                        <div class="pub-authors">Austin R. Benson, Rediet Abebe, Michael T. Schaub, Ali Jadbabaie, Jon Kleinberg</div>
+                        <div class="pub-venue">Proceedings of the National Academy of Sciences (PNAS), 2018</div>
+                        <div class="pub-links">
+                            <a href="papers/ScHoLP-PNAS-2018.pdf" class="pub-link pdf">PDF</a>
+                            <a href="papers/ScHoLP-PNAS-SI-2018.pdf" class="pub-link supplement">Supplement</a>
+                            <a href="https://github.com/arbenson/ScHoLP-Tutorial" class="pub-link code">Code</a>
+                            <a href="https://www.cs.cornell.edu/~arb/data/index.html#hon" class="pub-link data">Data</a>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="pub-title">A Unifying Generative Model for Graph Learning Algorithms: Label Propagation, Graph Convolutions, and Combinations</div>
+                        <div class="pub-authors">Junteng Jia, Austin R. Benson</div>
+                        <div class="pub-venue">SIAM Journal on Mathematics of Data Science (SIMODS), 2022</div>
+                        <div class="pub-links">
+                            <a href="https://arxiv.org/abs/2101.07730" class="pub-link pdf">PDF</a>
+                            <a href="https://github.com/000Justin000/GaussianMRF" class="pub-link code">Code</a>
+                            <a href="https://github.com/000Justin000/GaussianMRF" class="pub-link data">Data</a>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="pub-title">Combining Label Propagation and Simple Models Out-performs Graph Neural Networks</div>
+                        <div class="pub-authors">Qian Huang, Horace He, Abhay Singh, Ser-Nam Lim, Austin R. Benson</div>
+                        <div class="pub-venue">International Conference on Learning Representations (ICLR), 2021</div>
+                        <div class="pub-links">
+                            <a href="papers/simple-LP-ICLR-2021.pdf" class="pub-link pdf">PDF</a>
+                            <a href="https://github.com/Chillee/CorrectAndSmooth" class="pub-link code">Code</a>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="pub-title">Choosing to grow a graph: Modeling network formation as discrete choice</div>
+                        <div class="pub-authors">Jan Overgoor, Austin R. Benson, Johan Ugander</div>
+                        <div class="pub-venue">The Web Conference (WWW), 2019</div>
+                        <div class="pub-links">
+                            <a href="papers/choosing-to-grow-WWW-2019.pdf" class="pub-link pdf">PDF</a>
+                            <a href="https://github.com/janovergoor/choose2grow/" class="pub-link code">Code</a>
+                            <a href="posters/c2g-WWW-2019-poster.pdf" class="pub-link poster">Poster</a>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="pub-title">Random Walks on Simplicial Complexes and the normalized Hodge 1-Laplacian</div>
+                        <div class="pub-authors">Michael T. Schaub, Austin R. Benson, Paul Horn, Gabor Lippner, Ali Jadbabaie</div>
+                        <div class="pub-venue">SIAM Review, 2020</div>
+                        <div class="pub-links">
+                            <a href="papers/normalized-hodge-SIREV-2020.pdf" class="pub-link pdf">PDF</a>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="pub-title">Hypergraph Cuts with General Splitting Functions</div>
+                        <div class="pub-authors">Nate Veldt, Austin R. Benson, Jon Kleinberg</div>
+                        <div class="pub-venue">SIAM Review, 2022</div>
+                        <div class="pub-links">
+                            <a href="http://arxiv.org/abs/2001.02817" class="pub-link pdf">PDF</a>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="pub-title">On the relevance of irrelevant alternatives</div>
+                        <div class="pub-authors">Austin R. Benson, Ravi Kumar, Andrew Tomkins</div>
+                        <div class="pub-venue">The World Wide Web Conference (WWW), 2016</div>
+                        <div class="pub-links">
+                            <a href="papers/iia-www2016.pdf" class="pub-link pdf">PDF</a>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="pub-title">The spacey random walk: a stochastic process for higher-order data</div>
+                        <div class="pub-authors">Austin R. Benson, David F. Gleich, Lek-Heng Lim</div>
+                        <div class="pub-venue">SIAM Review, 2017</div>
+                        <div class="pub-links">
+                            <a href="papers/spacey-random-walks-sirev-2017.pdf" class="pub-link pdf">PDF</a>
+                            <a href="https://github.com/arbenson/spacey-random-walks" class="pub-link code">Code</a>
+                            <a href="https://www.cs.cornell.edu/~arb/data/index.html#taxi" class="pub-link data">Data</a>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="pub-title">Motifs in temporal networks</div>
+                        <div class="pub-authors">Ashwin Paranjape, Austin R. Benson, Jure Leskovec</div>
+                        <div class="pub-venue">The International Conference on Web Search and Data Mining (WSDM), 2017</div>
+                        <div class="pub-links">
+                            <a href="papers/temporal-motifs-wsdm2017.pdf" class="pub-link pdf">PDF</a>
+                            <a href="http://snap.stanford.edu/temporal-motifs/code.html" class="pub-link code">Code</a>
+                            <a href="http://snap.stanford.edu/temporal-motifs/data.html" class="pub-link data">Data</a>
+                            <a href="posters/temporal-motifs-wsdm-2017-poster.pdf" class="pub-link poster">Poster</a>
+                        </div>
+                    </li>
+                </ol>
+            </section>
+        </main>
     </div>
-    
-    <div class="container theme-showcase" role="main">
-      <br />
-      <div class="row">
-        <div class="col-lg-3">
-          <img class="img-thumbnail" src="images/arb-2022-small.jpg" alt="" style="width:85%"/>
-	  <br />
-        </div>
-        <div class="col-lg-5">
-	  <br />
-	  Austin R. Benson<br />
-	  Quant @ D. E. Shaw<br />
-	  New York City<br /><br />
-
-          <a href="mailto:arbenson@gmail.com" class="icon fa-envelope"></a> arbenson@gmail.com<br />
-          <a href="https://twitter.com/austinbenson" class="icon fa-twitter"></a> @austinbenson<br />
-          <a href="cv/Austin_R_Benson_CV.pdf" class="icon fa-file"></a> CV / resume<br />
-        </div>
-      </div>
-
-      <h6></h6>
-      <div class="row">
-        <div class="col-md-7">
-	  <br />
-	  <p>
-	    I am a quantitative analyst at D. E. Shaw & Co. in New York City,
-	    where I work on machine learning and quantitative finance.
-	  </p>
-
-	  <p>
-            Before working in finance, I was an Assistant Professor of Computer
-	    Science at Cornell University. My research focused on designing
-	    numerical methods and algorithmic frameworks to enable new, better,
-	    and bigger analyses of complex data. This research was recognized
-	    with an NSF CAREER Award, a KDD best paper award, a JP Morgan Chase
-	    AI Faculty Award, and the Gene Golub Doctoral Dissertation Award,
-	    and was supported by federal research grants from the Army Research
-	    Office and the NSF. I published this research in leading journals
-	    such as Science, Science Advances, Proceedings of the National
-	    Academy of Sciences, and SIAM Review, and at the main machine
-	    learning and data science conferences, including NeurIPS, ICML,
-	    ICLR, KDD, and WWW. I also taught classes that covered data science,
-	    machine learning, network science, matrix computations, and
-	    numerical optimization.
-	  </p>
-
-	  <p>
-	    Prior to Cornell, I spent nine formative years in the
-	    <a href="https://en.wikipedia.org/wiki/San_Francisco_Bay_Area">Bay
-	    Area</a>, where I completed my PhD and MS at Stanford University and
-	    BS and BA at the University of California, Berkeley. During summers,
-	    I interned at Google (four times), Sandia National Laboratories, and
-	    HP Labs.
-	  </p>
-
-	  <p>
-	    My old academic web site is at <a href="https://www.cs.cornell.edu/~arb/">https://www.cs.cornell.edu/~arb/</a>.
-	  </p>
-	  <br />
-	</div>
-      </div>
-      
-      <div class="row">
-        <div class="col-md-8">
-
-	  <div class="page-header" id="papers"><h6>Research papers</h6></div>
-	  
-	  <ul>
-            <li><p>Nonlinear Feature Diffusion on Hypergraphs.
-		Francesco Tudisco, Konstantin Prokopchik, Austin R. Benson.
-		International Conference on Machine Learning (ICML), 2022.<br />
-		<a href="https://arxiv.org/abs/2103.14867" class="btn btn-outline-dark btn-xs">paper pdf</a>
-            </p></li>
-	    
-	    <li><p>fauci-email: a json digest of Anthony Fauci's released emails.
-		Austin R. Benson, Nate Veldt, David F. Gleich.
-		International Conference on Web and Social Media (ICWSM), 2022.<br />
-		<a href="https://arxiv.org/abs/2108.01239" class="btn btn-outline-dark btn-xs">paper pdf</a>
-		<a href="https://github.com/nveldt/fauci-email" class="btn btn-outline-primary btn-xs">code</a>
-		<a href="https://github.com/nveldt/fauci-email" class="btn btn-outline-success btn-xs">data</a>
-            </p></li>
-	    
-            <li><p>Diverse and Experienced Group Discovery via Hypergraph Clustering.
-		Ilya Amburg, Nate Veldt, Austin R. Benson.
-		SIAM Data Mining (SDM) 2022.<br />
-		<a href="https://arxiv.org/abs/2006.05645" class="btn btn-outline-dark btn-xs">paper pdf</a>
-		<a href="https://github.com/ilyaamburg/fair-clustering-for-diverse-and-experienced-groups" class="btn btn-outline-primary btn-xs">code</a>
-		<a href="data/index.html#catedge" class="btn btn-outline-success btn-xs">data</a>
-            </p></li>
-
-            <li><p>Hypergraph Cuts with General Splitting Functions.
-		Nate Veldt, Austin R. Benson, Jon Kleinberg.
-		SIAM Review (SIREV), 2022.<br />
-		<a href="http://arxiv.org/abs/2001.02817" class="btn btn-outline-dark btn-xs">paper pdf</a>
-            </p></li>
-	    	    
-            <li><p>A Unifying Generative Model for Graph Learning Algorithms: Label Propagation, Graph Convolutions, and Combinations.
-		Junteng Jia, Austin R. Benson.
-		SIAM Journal on Mathematics of Data Science (SIMODS), 2022.<br />
-		<a href="https://arxiv.org/abs/2101.07730" class="btn btn-outline-dark btn-xs">paper pdf</a>
-		<a href="https://github.com/000Justin000/GaussianMRF" class="btn btn-outline-primary btn-xs">code</a>
-		<a href="https://github.com/000Justin000/GaussianMRF" class="btn btn-outline-success btn-xs">data</a>
-            </p></li>
-
-	    <li><p>Understanding Non-linearity in Graph Neural Networks from the Bayesian-Inference Perspective.
-		Rongzhe Wei, Haoteng Yin, Junteng Jia, Austin R. Benson, Pan Li.
-		Neural Information Processing Systems (NeurIPS), 2022.<br />
-		<a href="https://arxiv.org/abs/2207.11311" class="btn btn-outline-dark btn-xs">paper pdf</a>
-            </p></li>
-
-            <li><p>Graph-Based Methods for Discrete Choice.
-		Kiran Tomlinson, Austin R. Benson.		
-		arXiv:2205.11365, 2022.<br />
-		<a href="https://arxiv.org/abs/2205.11365" class="btn btn-outline-dark btn-xs">paper pdf</a>
-            </p></li>
-	    
-	    <li><p>Graph Neural Network Modeling of Grain-scale Anisotropic Elastic Behavior using Simulated and Measured Microscale Data.
-		Darren C. Pagan, Calvin R. Pash, Austin R. Benson, Matthew P. Kasemer.
-		arXiv:2205.06324, 2022.<br />
-		<a href="https://arxiv.org/abs/2205.06324" class="btn btn-outline-dark btn-xs">paper pdf</a>
-            </p></li>
-
-          <li><p>Approximate Decomposable Submodular Function Minimization for Cardinality-Based Components.
-		Nate Veldt, Austin R. Benson, Jon Kleinberg.
-		Neural Information Processing Systems (NeurIPS), 2021.<br />
-		<a href="papers/card-dsfm-neurips-2021.pdf" class="btn btn-outline-dark btn-xs">paper pdf</a>
-		<a href="https://github.com/nveldt/SparseCardDSFM" class="btn btn-outline-primary btn-xs">code</a>
-            </p></li>
-
-            <li><p>Communication-efficient distributed eigenspace estimation.
-		Vasileios Charisopoulos, Austin R. Benson, Anil Damle.
-		SIAM Journal on Mathematics of Data Science (SIMODS), 2021.<br />
-		<a href="papers/distributed-PCA-SIMODS-2021.pdf" class="btn btn-outline-dark btn-xs">paper pdf</a>
-		<a href="https://gitlab.com/vchariso/distributed-eigenspace-estimation" class="btn btn-outline-primary btn-xs">code</a>	    
-            </p></li>
-	    
-            <li><p>Generative hypergraph clustering: from blockmodels to modularity.
-		Philip S. Chodrow, Nate Veldt, Austin R. Benson.
-		Science Advances, 2021.<br />
-		<a href="papers/hyper-sbm-modularity-sciadv-2021.pdf" class="btn btn-outline-dark btn-xs">paper pdf</a>
-		<a href="https://github.com/PhilChodrow/HypergraphModularity" class="btn btn-outline-primary btn-xs">code</a>
-		<a href="data/index.html#hyperlabels" class="btn btn-outline-success btn-xs">data</a>		
-            </p></li>
-	    
-            <li><p>The Generalized Mean Densest Subgraph Problem.
-		Nate Veldt, Austin R. Benson, Jon Kleinberg.
-		ACM SIGKDD International Conference on Knowledge Discovery and Data Mining (KDD), 2021.<br />
-		<a href="papers/generalized-densest-subgraph-KDD-2021.pdf" class="btn btn-outline-dark btn-xs">paper pdf</a>
-		<a href="https://github.com/nveldt/GenMeanDSG" class="btn btn-outline-primary btn-xs">code</a>
-            </p></li>
-
-            <li><p>Choice Set Confounding in Discrete Choice.
-		Kiran Tomlinson, Johan Ugander, Austin R. Benson.		
-		ACM SIGKDD International Conference on Knowledge Discovery and Data Mining (KDD), 2021.<br />
-		<a href="papers/choice-set-confounding-KDD-2021.pdf" class="btn btn-outline-dark btn-xs">paper pdf</a>
-		<a href="https://github.com/tomlinsonk/choice-set-confounding" class="btn btn-outline-primary btn-xs">code</a>
-            </p></li>
-
-            <li><p>Learning Interpretable Feature Context Effects in Discrete Choice.
-		Kiran Tomlinson, Austin R. Benson.		
-		ACM SIGKDD International Conference on Knowledge Discovery and Data Mining (KDD), 2021.<br />
-		<a href="papers/LCL-choice-KDD-2021.pdf" class="btn btn-outline-dark btn-xs">paper pdf</a>
-		<a href="https://github.com/tomlinsonk/feature-context-effects" class="btn btn-outline-primary btn-xs">code</a>
-		<a href="https://github.com/tomlinsonk/feature-context-effects" class="btn btn-outline-success btn-xs">data</a>		
-            </p></li>
-
-            <li><p>Expertise and Dynamics within Crowdsourced Musical Knowledge Curation: A Case Study of the Genius Platform.
-		Derek Lim, Austin R. Benson.
-		International Conference on Web and Social Media (ICWSM), 2021.<br />
-		<a href="papers/expertise-dynamics-genius-ICWSM-2021.pdf" class="btn btn-outline-dark btn-xs">paper pdf</a>
-		<a href="https://github.com/cptq/genius-expertise" class="btn btn-outline-primary btn-xs">code</a>
-		<a href="data/index.html#genius" class="btn btn-outline-success btn-xs">data</a>				
-            </p></li>
-	    
-            <li><p>Higher-order Network Analysis Takes Off, Fueled by Old Ideas and New Data.
-		Austin R. Benson, David F. Gleich, Desmond J. Higham.
-		SIAM News, 2021.<br />
-		<a href="https://sinews.siam.org/Details-Page/higher-order-network-analysis-takes-off-fueled-by-old-ideas-and-new-data" class="btn btn-outline-dark btn-xs">article</a>
-		[<a href="https://arxiv.org/abs/2103.05031">expanded arXiv version</a>]
-              </p>
-	    </li>
-
-            <li><p>Combining Label Propagation and Simple Models Out-performs Graph Neural Networks.
-		Qian Huang, Horace He, Abhay Singh, Ser-Nam Lim, Austin R. Benson.		
-		International Conference on Learning Representations (ICLR), 2021.<br />
-		<a href="papers/simple-LP-ICLR-2021.pdf" class="btn btn-outline-dark btn-xs">paper pdf</a>
-		<a href="https://github.com/Chillee/CorrectAndSmooth" class="btn btn-outline-primary btn-xs">code</a>
-            </p></li>
-
-            <li><p>Planted Hitting Set Recovery in Hypergraphs.
-		Ilya Amburg, Jon Kleinberg, Austin R. Benson.
-		Journal of Physics: Complexity, 2021.<br />
-		<a href="papers/phs-Complexity-2021.pdf" class="btn btn-outline-dark btn-xs">paper pdf</a>
-		<a href="https://github.com/ilyaamburg/Hypergraph-Planted-Hitting-Set-Recovery" class="btn btn-outline-primary btn-xs">code</a>
-		<a href="data/index.html#pvc" class="btn btn-outline-success btn-xs">data</a>
-            </p></li>
-	    
-            <li><p>Nonlinear Higher-Order Label Spreading.
-		Francesco Tudisco, Austin R. Benson, Konstantin Prokopchik.
-		The Web Conference (WWW), 2021.<br />
-		<a href="papers/nonlinear-hols-WWW-2021.pdf" class="btn btn-outline-dark btn-xs">paper pdf</a>
-		<a href="https://github.com/doublelucker/nhols" class="btn btn-outline-primary btn-xs">code</a>
-		<a href="https://www.youtube.com/watch?v=oM9tae1JH10" class="btn btn-outline-warning btn-xs">video</a>
-            </p></li>
-
-            <li><p>Random Graphs with Prescribed K-Core Sequences: A New Null Model for Network Analysis.
-		Katherine Van Koevering, Austin R. Benson, Jon Kleinberg.
-		The Web Conference (WWW), 2021.<br />
-		<a href="papers/k-core-null-WWW-2021.pdf" class="btn btn-outline-dark btn-xs">paper pdf</a>		
-		<a href="https://github.com/ktvank/Random-Graphs-with-Prescribed-K-Core-Sequences" class="btn btn-outline-primary btn-xs">code</a>
-		<a href="https://www.youtube.com/watch?v=NqhGXUCJYpQ" class="btn btn-outline-warning btn-xs">video</a>
-            </p></li>
-
-            <li><p>Higher Order Information Identifies Tie Strength.
-		Arnab Sarker, Jean-Baptiste Seby, Austin R. Benson, Ali Jadbabaie.
-		arXiv:2108.02091, 2021.<br />
-		<a href="https://arxiv.org/abs/2108.02091" class="btn btn-outline-dark btn-xs">paper pdf</a>
-            </p></li>
-
-	    <li><p>Edge Proposal Sets for Link Prediction.
-		Abhay Singh, Qian Huang, Sijia Linda Huang, Omkar Bhalerao, Horace He, Ser-Nam Lim, Austin R. Benson.
-		arXiv:2106.15810, 2021.<br />
-		<a href="https://arxiv.org/abs/2106.15810" class="btn btn-outline-dark btn-xs">paper pdf</a>
-		<a href="https://github.com/CUAI/Edge-Proposal-Sets" class="btn btn-outline-primary btn-xs">code</a>
-            </p></li>
-
-	    <li><p>Graph Belief Propagation Networks.
-		Junteng Jia, Cenk Baykal, Vamsi K. Potluru, Austin R. Benson.
-		arXiv:2106.03033, 2021.<br />
-		<a href="https://arxiv.org/abs/2106.03033" class="btn btn-outline-dark btn-xs">paper pdf</a>
-		<a href="https://github.com/000Justin000/GBPN" class="btn btn-outline-primary btn-xs">code</a>
-            </p></li>
-	      
-            <li><p>Higher-order Homophily is Combinatorially Impossible.
-		Nate Veldt, Austin R. Benson, Jon Kleinberg.
-		arXiv:2103.11818, 2021.<br />
-		<a href="https://arxiv.org/abs/2103.11818" class="btn btn-outline-dark btn-xs">paper pdf</a>
-		<a href="https://github.com/nveldt/HypergraphHomophily" class="btn btn-outline-primary btn-xs">code</a>
-            </p></li>
-
-            <li><p>Better Set Representations For Relational Reasoning.
-		Qian Huang, Horace He, Abhay Singh, Yan Zhang, Ser-Nam Lim, Austin R. Benson.
-		Neural Information Processing Systems (NeurIPS), 2020.<br />
-		<a href="papers/set-reps-relational-neurips-2020.pdf" class="btn btn-outline-dark btn-xs">paper pdf</a>
-		<a href="https://github.com/CUVL/SSLR" class="btn btn-outline-primary btn-xs">code</a>
-            </p></li>
-
-            <li><p>Entrywise Convergence of Iterative Methods for Eigenproblems.
-		Vasileios Charisopoulos, Austin R. Benson, Anil Damle.
-		Neural Information Processing Systems (NeurIPS), 2020.<br />
-		<a href="papers/entrywise-convergence-neurips-2020.pdf" class="btn btn-outline-dark btn-xs">paper pdf</a>
-		<a href="https://github.com/VHarisop/entrywise-convergence" class="btn btn-outline-primary btn-xs">code</a>	    
-            </p></li>
-	    
-            <li><p>Residual Correlation in Graph Neural Network Regression.
-		Junteng Jia, Austin R. Benson.
-		ACM SIGKDD International Conference on Knowledge Discovery and Data Mining (KDD), 2020.<br />
-		<a href="papers/residual-correlation-KDD-2020.pdf" class="btn btn-outline-dark btn-xs">paper pdf</a>
-		<a href="https://github.com/000Justin000/gnn-residual-correlation" class="btn btn-outline-primary btn-xs">code</a>
-		<a href="data/index.html#UScounty" class="btn btn-outline-success btn-xs">data</a>
-		[<a href="https://github.com/JunwenBai/correlation-gnn">(G)PyTorch implementation</a> from Junwen Bai and Yucheng Lu.]
-            </p></li>
-
-	    <li><p>Minimizing Localized Ratio Cut Objectives in Hypergraphs.	
-		Nate Veldt, Austin R. Benson, Jon Kleinberg.
-		ACM SIGKDD International Conference on Knowledge Discovery and Data Mining (KDD), 2020.<br />		
-		<a href="papers/hypergraph-ratio-cut-KDD-2020.pdf" class="btn btn-outline-dark btn-xs">paper pdf</a>	
-		<a href="https://github.com/nveldt/HypergraphFlowClustering" class="btn btn-outline-primary btn-xs">code</a>	
-		<a href="data/index.html#hyperlabels" class="btn btn-outline-success btn-xs">data</a>	    	
-            </p></li>
-
-            <li><p>Choice Set Optimization Under Discrete Choice Models of Group Decisions.
-		Kiran Tomlinson, Austin R. Benson.
-		International Conference on Machine Learning (ICML), 2020.<br />
-		<a href="papers/choice-set-opt-ICML-2020.pdf" class="btn btn-outline-dark btn-xs">paper pdf</a>
-		<a href="https://github.com/tomlinsonk/choice-set-opt" class="btn btn-outline-primary btn-xs">code</a>
-		<a href="https://github.com/tomlinsonk/choice-set-opt" class="btn btn-outline-success btn-xs">data</a>
-		<a href="slides/choice-set-opt-ICML-2020-slides.pdf" class="btn btn-outline-secondary btn-xs">slides</a>
-            </p></li>
-
-	    <li><p>Neighborhood and PageRank methods for pairwise link prediction.	
-		Huda Nassar, Austin Benson, David F. Gleich.	
-		Social Network Analysis and Mining (SNAM), 2020<br />
-		<a href="papers/pairwise-SNAM-2020.pdf" class="btn btn-outline-dark btn-xs">paper pdf</a>
-		<a href="https://github.com/nassarhuda/pairseed" class="btn btn-outline-primary btn-xs">code</a>		
-            </p></li>
-	    
-            <li><p>Network Interpolation.
-		Thomas Reeves, Anil Damle, Austin R. Benson.
-		SIAM Journal on Mathematics of Data Science (SIMODS), 2020.<br />
-		<a href="papers/network-interpolation-SIMODS-2020.pdf" class="btn btn-outline-dark btn-xs">paper pdf</a>
-		<a href="https://github.com/tr-maker/networkinterpolation" class="btn btn-outline-primary btn-xs">code</a>	    
-            </p></li>
-
-            <li><p>Measuring Directed Triadic Closure with Closure Coefficients.
-		Hao Yin, Austin R. Benson, Johan Ugander.
-		Network Science, 2020.<br />
-		<a href="papers/directed-closure-NWS-2020.pdf" class="btn btn-outline-dark btn-xs">paper pdf</a>
-		<a href="https://github.com/arbenson/ClosureCoefficients.jl" class="btn btn-outline-primary btn-xs">code</a>
-            </p></li>
-
-            <li><p>Random Walks on Simplicial Complexes and the normalized Hodge 1-Laplacian.
-		Michael T. Schaub, Austin R. Benson, Paul Horn, Gabor Lippner, Ali Jadbabaie.
-		SIAM Review (SIREV), 2020.<br />
-		<a href="papers/normalized-hodge-SIREV-2020.pdf" class="btn btn-outline-dark btn-xs">paper pdf</a>
-		[<a href="papers/normalized-hodge-SIREV-2020-editor-perspective.pdf">Editor's overview</a>]
-            </p></li>
-
-            <li><p>Clustering in graphs and hypergraphs with categorical edge labels.
-		Ilya Amburg, Nate Veldt, Austin R. Benson.
-		The Web Conference (WWW), 2020.<br />
-		<a href="papers/cat-edge-clus-WWW-2020.pdf" class="btn btn-outline-dark btn-xs">paper pdf</a>
-		<a href="https://github.com/nveldt/CategoricalEdgeClustering" class="btn btn-outline-primary btn-xs">code</a>
-		<a href="data/index.html#catedge" class="btn btn-outline-success btn-xs">data</a>	    
-            </p></li>
-	    
-            <li><p>Frozen Binomials on the Web: Word Ordering and Langauge Conventions in Online Text.
-		Katherine Van Koevering, Austin R. Benson, Jon Kleinberg.
-		The Web Conference (WWW), 2020.<br />
-		<a href="papers/frozen-binomials-WWW-2020.pdf" class="btn btn-outline-dark btn-xs">paper pdf</a>
-		<a href="https://github.com/ktvank/Frozen-Binomials" class="btn btn-outline-primary btn-xs">code</a>
-            </p></li>
-
-            <li><p>Using cliques with higher-order spectral embeddings improves graph visualizations.
-		Huda Nassar, Caitlin Kennedy, Shweta Jain, Caitlin Kennedy, Austin R. Benson, David F. Gleich.
-		The Web Conference (WWW), 2020.<br />
-		<a href="papers/GLANCE-WWW-2020.pdf" class="btn btn-outline-dark btn-xs">paper pdf</a>
-		<a href="https://github.com/nassarhuda/GLANCE" class="btn btn-outline-primary btn-xs">code</a>
-		<a href="https://www.youtube.com/watch?v=AAsf9_fYVs0" class="btn btn-outline-warning btn-xs">video</a>
-            </p></li>
-
-            <li><p>Retrieving Top Weighted Triangles in Graphs.
-		Raunak Kumar, Paul Liu, Moses Charikar, Austin R. Benson.
-		ACM International Conference on Web Search and Data Mining (WSDM), 2020.<br/>	    
-		<a href="papers/top-weighted-wsdm-2020.pdf" class="btn btn-outline-dark btn-xs">paper pdf</a>
-		<a href="https://github.com/raunakkmr/Retrieving-top-weighted-triangles-in-graphs" class="btn btn-outline-primary btn-xs">code</a>
-		<a href="data/index.html#largeweighted" class="btn btn-outline-success btn-xs">data</a>
-            </p></li>
-
-            <li><p>Over-parametrized neural networks as under-determined linear systems.
-		Austin R. Benson, Anil Damle, Alex Townsend.		
-		arXiv:2010.15959, 2020.<br />
-		<a href="https://arxiv.org/abs/2010.15959" class="btn btn-outline-dark btn-xs">paper pdf</a>
-            </p></li>
-	    	    	    
-            <li><p>A simple bipartite graph projection model for clustering in networks.
-		Austin R. Benson, Paul Liu, Hao Yin.
-		arXiv:2007.00761, 2020.<br />
-		<a href="https://arxiv.org/abs/2007.00761" class="btn btn-outline-dark btn-xs">paper pdf</a>
-		<a href="https://gitlab.com/paul.liu.ubc/bipartite-generation-model" class="btn btn-outline-primary btn-xs">code</a>
-            </p></li>
-
-            <li><p>Augmented Sparsifiers for Generalized Hypergraph Cuts with Applications to Decomposable Submodular Function Minimization.
-		Austin R. Benson, Jon Kleinberg, Nate Veldt.
-		arXiv:2007.08075, 2020.<br />
-		<a href="https://arxiv.org/abs/2007.08075" class="btn btn-outline-dark btn-xs">paper pdf</a>
-            </p></li>
-	    
-            <li><p>Neural Jump Stochastic Differential Equations.
-		Junteng Jia, Austin R. Benson.
-		Neural Information Processing Systems (NeurIPS), 2019.<br />	    
-		<a href="papers/njsde-neurips-2019.pdf" class="btn btn-outline-dark btn-xs">paper pdf</a>
-		<a href="https://github.com/000Justin000/torchdiffeq/tree/jj585" class="btn btn-outline-primary btn-xs">code</a>
-		<a href="posters/njsde-NeurIPS-2019.pdf" class="btn btn-outline-info btn-xs">poster</a>
-            </p></li>
-
-            <li><p>Modeling and Analysis of Tagging Networks in Stack Exchange Communities.
-		Shangdi Yu, Xiang Fu, Austin R. Benson.
-		Journal of Complex Networks, 2019.<br/>
-		<a href="papers/stack-exchange-jocn-2019.pdf" class="btn btn-outline-dark btn-xs">paper pdf</a>     
-		<a href="https://github.com/yushangdi/stack-exchange-cotagging" class="btn btn-outline-primary btn-xs">code</a>
-		<a href="data/index.html#sxtags" class="btn btn-outline-success btn-xs">data</a>
-            </p></li>
-
-            <li><p>Computing tensor Z-eigenvectors with dynamical systems.
-		Austin R. Benson, David F. Gleich.
-		SIAM Journal on Matrix Analysis and Applications (SIMAX), 2019.<br />
-		<a href="papers/Z-evec-dynsys-SIMAX-2019.pdf" class="btn btn-outline-dark btn-xs">paper pdf</a>
-		<a href="https://github.com/arbenson/TZE-dynsys" class="btn btn-outline-primary btn-xs">code</a>
-            </p></li>
-
-	    <li><p>Unsupervised learning of dislocation motion.
-		Darren C. Pagan, Thien Q. Phan, Jordan S. Weaver, Austin R. Benson, Armand J. Beaudoin.
-		Acta Materialia, 2019.<br />
-		<a href="papers/unsupervised-dislocation-Acta-2019.pdf" class="btn btn-outline-dark btn-xs">paper pdf</a>
-	    </p></li>
-
-	    <li><p>Automated Grain Yield Behavior Classification.
-		Darren C. Pagan, Jakob Kaminsky, Wesley A. Tayon, Kelly E. Nygren, Armand J. Beaudoin, Austin R. Benson.
-		The Journal of The Minerals, Metals & Materials Society (JOM), 2019.<br />
-		<a href="papers/grain-yield-auto-JOM-2019.pdf" class="btn btn-outline-dark btn-xs">paper pdf</a>	    
-	    </p></li>
-	    
-            <li><p>Pairwise Link Prediction.
-		Huda Nassar, Austin R. Benson, David F. Gleich.
-		IEEE/ACM International Conference on Advances in Social Networks Analysis and Mining (ASONAM), 2019.
-		<heavy>Best Paper Award Runner-up.</heavy><br />
-		<a href="papers/pairwise-ASONAM-2019.pdf" class="btn btn-outline-dark btn-xs">paper pdf</a>
-		<a href="https://github.com/nassarhuda/pairseed" class="btn btn-outline-primary btn-xs">code</a>
-            </p></li>
-
-            <li><p>Graph-based Semi-Supervised & Active Learning for Edge Flows.
-		Junteng Jia, Michael T. Schaub, Santiago Segarra, Austin R. Benson.
-		ACM SIGKDD International Conference on Knowledge Discovery and Data Mining (KDD), 2019.<br />
-		<a href="papers/flow-ssl-KDD-2019.pdf" class="btn btn-outline-dark btn-xs">paper pdf</a>
-		<a href="https://github.com/000Justin000/ssl_edge" class="btn btn-outline-primary btn-xs">code</a>
-		<a href="posters/FlowSSL-KDD-2019-poster.pdf" class="btn btn-outline-info btn-xs">poster</a>
-		<a href="https://www.youtube.com/watch?v=upJx1n4rC1Y" class="btn btn-outline-warning btn-xs">video</a>
-            </p></li>
-
-            <li><p>Network Density of States.
-		Kun Dong, Austin R. Benson, David Bindel.
-		ACM SIGKDD International Conference on Knowledge Discovery and Data Mining (KDD), 2019.
-		<heavy>Best Paper Award</heavy><br />
-		<a href="papers/Network-DOS-KDD-2019.pdf" class="btn btn-outline-dark btn-xs">paper pdf</a>
-		<a href="https://github.com/kd383/NetworkDOS" class="btn btn-outline-primary btn-xs">code</a>
-		<a href="posters/Network-DOS-KDD-2019-poster.pdf" class="btn btn-outline-info btn-xs">poster</a>
-		<a href="https://www.youtube.com/watch?v=trdM5_vkMKU" class="btn btn-outline-warning btn-xs">video</a>		
-            </p></li>
-
-            <li><p>Three hypergraph eigenvector centralities.
-		Austin R. Benson.
-		SIAM Journal on Mathematics of Data Science (SIMODS), 2019.<br/>
-		<a href="papers/3evec-SIMODS-2019.pdf" class="btn btn-outline-dark btn-xs">paper pdf</a>
-		<a href="https://github.com/arbenson/Hyper-Evec-Centrality" class="btn btn-outline-primary btn-xs">code</a>
-            </p></li>
-	    
-            <li><p>Link Prediction in Networks with Core-Fringe Data.
-		Austin R. Benson, Jon Kleinberg.
-		World Wide Web Conference (WWW), 2019.<br/>
-		<a href="papers/core-fringe-link-pred-WWW-2019.pdf" class="btn btn-outline-dark btn-xs">paper pdf</a>
-		<a href="https://github.com/arbenson/cflp" class="btn btn-outline-primary btn-xs">code</a>
-		<a href="posters/cflp-WWW-2019-poster.pdf" class="btn btn-outline-info btn-xs">poster</a>
-            </p></li>
-            
-            <li><p>Choosing to grow a graph: Modeling network formation as discrete choice.
-		Jan Overgoor, Austin R. Benson, Johan Ugander.
-		World Wide Web Conference (WWW), 2019.<br/>
-		<a href="papers/choosing-to-grow-WWW-2019.pdf" class="btn btn-outline-dark btn-xs">paper pdf</a>
-		<a href="https://github.com/janovergoor/choose2grow/" class="btn btn-outline-primary btn-xs">code</a>
-		<a href="posters/c2g-WWW-2019-poster.pdf" class="btn btn-outline-info btn-xs">poster</a>	    
-            </p></li>
-            
-            <li><p>Random Spatial Network Models with Core-Periphery Structure.
-		Junteng Jia, Austin R. Benson.
-		ACM International Conference on Web Search and Data Mining (WSDM), 2019.<br/>
-		<a href="papers/spatial-CP-WSDM-2019.pdf" class="btn btn-outline-dark btn-xs">paper pdf</a>
-		<a href="https://github.com/000Justin000/spatial_core_periphery" class="btn btn-outline-primary btn-xs">code</a>
-		<a href="data/index.html#spatial" class="btn btn-outline-success btn-xs">data</a>
-		<a href="posters/core-periph-WSDM-2019-poster.pdf" class="btn btn-outline-info btn-xs">poster</a>
-            </p></li>
-            
-            <li><p>Sampling Methods for Counting Temporal Motifs.
-		Paul Liu, Austin R. Benson, Moses Charikar.
-		ACM International Conference on Web Search and Data Mining (WSDM), 2019.<br/>
-		<a href="papers/sampling-temporal-motifs-WSDM-2019.pdf" class="btn btn-outline-dark btn-xs">paper pdf</a>
-		<a href="https://gitlab.com/paul.liu.ubc/sampling-temporal-motifs" class="btn btn-outline-primary btn-xs">code</a>
-		<a href="data/index.html#tempnets" class="btn btn-outline-success btn-xs">data</a>
-            </p></li>
-            
-            <li><p>The Local Closure Coefficient: A New Perspective On Network Clustering.
-		Hao Yin, Austin R. Benson, Jure Leskovec.
-		ACM International Conference on Web Search and Data Mining (WSDM), 2019.<br/>
-		<a href="papers/closure-coefficients-WSDM-2019.pdf" class="btn btn-outline-dark btn-xs">paper pdf</a>
-		<a href="https://github.com/arbenson/ClosureCoefficients.jl" class="btn btn-outline-primary btn-xs">code</a>		
-            </p></li>
-
-            <li><p>Incrementally Updated Spectral Embeddings.
-		Vasileios Charisopoulos, Austin R. Benson, Anil Damle.
-		arXiv:1909.01188, 2019.<br />
-		<a href="https://arxiv.org/abs/1909.01188" class="btn btn-outline-dark btn-xs">paper pdf</a>
-		<a href="https://github.com/VHarisop/inc-spectral-embeddings" class="btn btn-outline-primary btn-xs">code</a>
-		<a href="posters/incremental-spectral-ATD-2019.pdf" class="btn btn-outline-info btn-xs">poster</a>
-            </p></li>
-            
-            <li><p>Simplicial closure and higher-order link prediction.
-		Austin R. Benson, Rediet Abebe, Michael T. Schaub, Ali Jadbabaie, Jon Kleinberg.
-		Proceedings of the National Academy of Sciences (PNAS), 2018.<br/>
-		<a href="papers/ScHoLP-PNAS-2018.pdf" class="btn btn-outline-dark btn-xs">paper pdf</a>
-		<a href="papers/ScHoLP-PNAS-SI-2018.pdf" class="btn btn-outline-secondary btn-xs">supplement</a>
-		<a href="https://github.com/arbenson/ScHoLP-Tutorial" class="btn btn-outline-primary btn-xs">code</a>
-		<a href="data/index.html#hon" class="btn btn-outline-success btn-xs">data</a>
-            </p></li>
-            
-            <li><p>Found Graph Data and Planted Vertex Covers.
-		Austin R. Benson, Jon Kleinberg.
-		Neural Information Processing Systems (NeurIPS), 2018.<br />
-		<a href="papers/fgd-pvc-NeurIPS-2018.pdf" class="btn btn-outline-dark btn-xs">paper pdf</a>
-		<a href="https://github.com/arbenson/FGDnPVC" class="btn btn-outline-primary btn-xs">code</a>
-		<a href="data/index.html#pvc" class="btn btn-outline-success btn-xs">data</a>
-		<a href="posters/FGDnPVC-NeurIPS-2018-poster.pdf" class="btn btn-outline-info btn-xs">poster</a>
-            </p></li>
-            
-            <li><p>Sequences of Sets.
-		Austin R. Benson, Ravi Kumar, Andrew Tomkins.
-		ACM SIGKDD International Conference on Knowledge Discovery and Data Mining (KDD), 2018.<br />
-		<a href="papers/sequences-of-sets-KDD-2018.pdf" class="btn btn-outline-dark btn-xs">paper pdf</a>
-		<a href="https://github.com/arbenson/Sequences-of-Sets" class="btn btn-outline-primary btn-xs">code</a>
-		<a href="data/index.html#sos" class="btn btn-outline-success btn-xs">data</a>
-		<a href="posters/sequences-of-sets-KDD-2018-poster.pdf" class="btn btn-outline-info btn-xs">poster</a>
-		<a href="https://www.youtube.com/watch?v=Z4C5gwaifEc" class="btn btn-outline-warning btn-xs">video</a>		
-            </p></li>
-            
-            <li><p>Higher-order clustering in networks.
-		Hao Yin, Austin R. Benson, Jure Leskovec.
-		Physical Review E (PRE), 2018.<br />
-		<a href="papers/higher-order-clustering-PRE-2018.pdf" class="btn btn-outline-dark btn-xs">paper pdf</a>
-		<a href="https://github.com/arbenson/HigherOrderClustering.jl" class="btn btn-outline-primary btn-xs">code</a>
-            </p></li>
-            
-            <li><p>A Discrete Choice Model for Subset Selection.
-		Austin R. Benson, Ravi Kumar, Andrew Tomkins.
-		ACM International Conference on Web Search and Data Mining (WSDM), 2018. <br />
-		<a href="papers/higher-order-choice-wsdm-2018.pdf" class="btn btn-outline-dark btn-xs">paper pdf</a>
-		<a href="https://github.com/arbenson/discrete-subset-choice" class="btn btn-outline-primary btn-xs">code</a>
-		<a href="data/index.html#subset-choice" class="btn btn-outline-success btn-xs">data</a>
-		<a href="posters/discrete-subset-choice-WSDM-2018-poster.pdf" class="btn btn-outline-info btn-xs">poster</a>
-            </p></li>
-            
-            <li><p>Local higher-order graph clustering.
-		Hao Yin, Austin R. Benson, Jure Leskovec, David F. Gleich.
-		ACM SIGKDD International Conference on Knowledge Discovery and Data Mining (KDD), 2017.<br />
-		<a href="papers/local-higher-order-kdd-2017.pdf" class="btn btn-outline-dark btn-xs">paper pdf</a>
-		<a href="http://snap.stanford.edu/mappr/code.html" class="btn btn-outline-primary btn-xs">code</a>
-		<a href="http://snap.stanford.edu/mappr/data.html" class="btn btn-outline-success btn-xs">data</a>
-		<a href="https://www.youtube.com/watch?v=xxvtWONLIEo" class="btn btn-outline-warning btn-xs">video</a>
-            </p></li>
-            
-            <li><p>Motifs in temporal networks.
-		Ashwin Paranjape, Austin R. Benson, Jure Leskovec.
-		ACM International Conference on Web Search and Data Mining (WSDM), 2017. <br/>
-		<a href="papers/temporal-motifs-wsdm2017.pdf" class="btn btn-outline-dark btn-xs">paper pdf</a>
-		<a href="http://snap.stanford.edu/temporal-motifs/code.html" class="btn btn-outline-primary btn-xs">code</a>
-		<a href="http://snap.stanford.edu/temporal-motifs/data.html" class="btn btn-outline-success btn-xs">data</a>
-		<a href="posters/temporal-motifs-wsdm-2017-poster.pdf" class="btn btn-outline-info btn-xs">poster</a>
-            </p></li>
-            
-            <li><p>The spacey random walk: a stochastic process for higher-order data.
-		Austin R. Benson, David F. Gleich, Lek-Heng Lim.
-		SIAM Review (SIREV), 2017.<br />
-		<a href="papers/spacey-random-walks-sirev-2017.pdf" class="btn btn-outline-dark btn-xs">paper pdf</a>
-		<a href="https://github.com/arbenson/spacey-random-walks" class="btn btn-outline-primary btn-xs">code</a>
-		<a href="data/Manhattan-taxi-trajectories/index.html" class="btn btn-outline-success btn-xs">data</a>
-            </p></li>
-            
-            <li><p>Higher-order organization of complex networks.
-		Austin R. Benson, David F. Gleich, Jure Leskovec.
-		Science, 2016.<br />
-		<a href="papers/higher-order-science2016.pdf" class="btn btn-outline-dark btn-xs">paper pdf</a>
-		<a href="papers/higher-order-SM-science2016.pdf" class="btn btn-outline-secondary btn-xs">supplement</a>
-		<a href="http://snap.stanford.edu/higher-order/code.html" class="btn btn-outline-primary btn-xs">code</a>
-		<a href="http://snap.stanford.edu/higher-order/data.html" class="btn btn-outline-success btn-xs">data</a>
-            </p></li>
-            
-            <li><p>General tensor spectral co-clustering for higher-order data.
-		Tao Wu, Austin R. Benson, David F. Gleich.
-		Neural Information Processing Systems (NeurIPS), 2016.<br />
-		<a href="papers/tensor-cocluster-neurips2016.pdf" class="btn btn-outline-dark btn-xs">paper pdf</a>
-		<a href="https://github.com/wutao27/GtensorSC" class="btn btn-outline-primary btn-xs">code</a>
-            </p></li>
-            
-            <li><p>On the relevance of irrelevant alternatives.
-		Austin R. Benson, Ravi Kumar, Andrew Tomkins.
-		International Conference on World Wide Web (WWW), 2016. <br/>
-		<a href="papers/iia-www2016.pdf" class="btn btn-outline-dark btn-xs">paper pdf</a>
-            </p></li>
-            
-            <li><p>Modeling user consumption sequences.
-		Austin R. Benson, Ravi Kumar, Andrew Tomkins.
-		International Conference on World Wide Web (WWW), 2016. <br/>
-		<a href="papers/sequences-www2016.pdf" class="btn btn-outline-dark btn-xs">paper pdf</a>
-            </p></li>
-            
-            <li><p>Improving the numerical stability of fast matrix multiplication.
-		Grey Ballard, Austin R. Benson, Alex Druinksy, Benjamin Lipshitz, Oded Schwartz.
-		SIAM Journal on Matrix Analysis and Applications (SIMAX), 2016.<br />
-		<a href="papers/fast-matmul-simax2016.pdf" class="btn btn-outline-dark btn-xs">paper pdf</a>
-		<a href="https://github.com/arbenson/fast-matmul" class="btn btn-outline-primary btn-xs">code</a>
-            </p></li>
-            
-            <li><p>Tensor spectral clustering for partitioning higher-order network structures.
-		Austin R. Benson, David F. Gleich, Jure Leskovec.
-		SIAM International Conference on Data Mining (SDM), 2015.<br />
-		<a href="papers/tsc-sdm2015.pdf" class="btn btn-outline-dark btn-xs">paper pdf</a>
-		<a href="https://github.com/arbenson/tensor-sc" class="btn btn-outline-primary btn-xs">code</a>
-		<a href="https://www.pathlms.com/siam/courses/1249/sections/1318/video_presentations/11276" class="btn btn-outline-warning btn-xs">video</a>		
-            </p></li>
-            
-            <li><p>A framework for practical parallel fast matrix multiplication.
-		Austin R. Benson, Grey Ballard.
-		ACM SIGPLAN Symposium on Principles and Practice of Parallel Programming (PPoPP), 2015.<br />
-		<a href="papers/fast-matmul-ppopp2015.pdf" class="btn btn-outline-dark btn-xs">paper pdf</a>
-		<a href="https://github.com/arbenson/fast-matmul" class="btn btn-outline-primary btn-xs">code</a>
-            </p></li>
-
-            <li><p>Scalable methods for nonnegative matrix factorizations of near-separable tall-and-skinny matrices.
-		Austin R. Benson, Jason D. Lee, Bartek Rajwa, David F. Gleich.
-		Neural Information Processing Systems (NeurIPS), 2014.
-		<heavy>Spotlight Presentation</heavy><br />
-		<a href="papers/mrnmf-neurips-2014.pdf" class="btn btn-outline-dark btn-xs">paper pdf</a>
-		<a href="https://github.com/arbenson/mrnmf" class="btn btn-outline-primary btn-xs">code</a>
-		<a href="data/flow-cytometry/index.html" class="btn btn-outline-success btn-xs">data</a>
-		<a href="posters/nmf-neurips-2014-poster.pdf" class="btn btn-outline-info btn-xs">poster</a>
-            </p></li>
-
-            <li><p>Learning multifractal structure in large networks.
-		Austin R. Benson, Carlos Riquelme, Sven Schmit.
-		ACM SIGKDD International Conference on Knowledge Discovery and Data Mining (KDD), 2014.<br />
-		<a href="papers/multifractal-kdd2014.pdf" class="btn btn-outline-dark btn-xs">paper pdf</a>
-		<a href="papers/multifractal-supplement-kdd2014.pdf" class="btn btn-outline-secondary btn-xs">supplement</a>
-		<a href="http://videolectures.net/kdd2014_benson_schmit_large_networks/" class="btn btn-outline-warning btn-xs">video</a>
-            </p></li>
-
-            <li><p>A parallel directional Fast Multipole Method.
-		Austin R. Benson, Jack Poulson, Kenneth Tran, Bj&#246;rn Engquist, Lexing Ying.
-		SIAM Journal on Scientific Computing (SISC), 2014.<br />
-		<a href="papers/ddfmm-sisc2014.pdf" class="btn btn-outline-dark btn-xs">paper pdf</a>
-		<a href="https://github.com/arbenson/ddfmm" class="btn btn-outline-primary btn-xs">code</a>
-            </p></li>
-
-            <li><p>Silent error detection in numerical time-stepping schemes.
-		Austin R. Benson, Sven Schmit, Robert Schreiber.
-		International Journal of High Performance Computing Applications (IJHPCA), 2014.<br />
-		<a href="papers/silent-ijhpca2014.pdf" class="btn btn-outline-dark btn-xs">paper pdf</a>
-		<a href="./silent.html" class="btn btn-outline-secondary btn-xs">supplement</a>
-		<a href="./silent.html#Code" class="btn btn-outline-primary btn-xs">code</a>
-            </p></li>
-
-            <li><p>Direct QR factorizations for tall-and-skinny matrices in MapReduce architectures.
-		Austin R. Benson, David F. Gleich, James Demmel.
-		IEEE International Conference on Big Data (IEEE BigData), 2013.<br />
-		<a href="papers/mrtsqr-bigdata2013.pdf" class="btn btn-outline-dark btn-xs">paper pdf</a>
-		<a href="https://github.com/arbenson/mrtsqr" class="btn btn-outline-primary btn-xs">code</a>
-            </p></li>
-	  </ul>
-
-	  <br />
-	<div class="page-header" id="teaching"><h6>Teaching material</h6></div>
-	
-	<h7>Cornell classes</h7>
-	<ul>
-          <li><date>SP 2021.</date> <a href="https://www.cs.cornell.edu/courses/cs4220/2021sp/">CS 4220/Math 4260: Numerical Analysis: Linear and Nonlinear Problems</a>.</li>
-          <li><date>FA 2020.</date> <a href="https://www.cs.cornell.edu/courses/cs6210/2020fa/">CS 6210: Matrix Computations</a>.
-          <li><date>SP 2020.</date> <a href="https://www.cs.cornell.edu/courses/cs6241/2020sp/">CS 6241: Numerical Methods for Data Science</a>.</li>
-          <li><date>FA 2019.</date> <a href="https://courses.cit.cornell.edu/info2040_2019fa/">CS 2850/INFO 2040/ECON 2040/SOC 2090: Networks</a>.</li>
-          <li><date>SP 2019.</date> <a href="http://www.cs.cornell.edu/courses/cs6241/2019sp/">CS 6241: Numerical Methods for Data Science</a>.</li>
-          <li><date>FA 2018.</date> <a href="https://courses.cit.cornell.edu/info2040_2018fa/">CS 2850/INFO 2040/ECON 2040/SOC 2090: Networks</a>.</li>
-	</ul>
-	
-	<h7>Expository material</h7>
-	<ul>
-	    <li>Cornell <a href="https://www.cs.cornell.edu/content/workshop/sonic">SoNIC</a> workshop: <a href="https://github.com/arbenson/SoNIC-2021">research lab notebooks</a>.
-	    </li>
-	  <li><a href="https://sinews.siam.org/Details-Page/higher-order-network-analysis-takes-off-fueled-by-old-ideas-and-new-data">Higher-order Network Analysis Takes Off, Fueled by Old Ideas and New Data</a>
-	    article in SIAM News 2021 (with David Gleich and Des Higham).
-	    There is also an expanded <a href="https://arxiv.org/abs/2103.05031">arXiv version</a> with more references.
-	    
-	  <li>SIAM ALA '18 tutorial on Tensor Eigenvectors and Stochastic Processes (with David Gleich). <br />
-            [<a href="https://www.cs.cornell.edu/~arb/tesp/">web</a>]
-            [<a href="https://www.slideshare.net/arbenson/tensor-eigenvectors-and-stochastic-processes">slides</a>]
-            [<a href="https://github.com/arbenson/tesp-minitutorial">code</a>]
-	  </li>
-	</ul>
-	  
-	</div> <!-- /container -->
-
-	
-	<!-- Optional JavaScript -->
-	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  </body>
+</body>
 </html>
