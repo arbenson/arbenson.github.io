@@ -17,19 +17,19 @@
             color: #111;
             line-height: 1.7;
             background: #fffff8;
-            font-size: 17px;
+            font-size: 18px;
         }
 
         .container {
             max-width: 900px;
             margin: 0 auto;
-            padding: 60px 24px;
+            padding: 72px 24px;
         }
 
         header {
-            margin-bottom: 32px;
-            border-bottom: 1px solid #ccc;
-            padding-bottom: 24px;
+            margin-bottom: 44px;
+            border-bottom: 1px solid #e2e0d6;
+            padding-bottom: 28px;
         }
 
         .profile-section {
@@ -47,19 +47,20 @@
             height: 180px;
             border-radius: 4px;
             object-fit: cover;
-            border: 1px solid #ccc;
+            border: 1px solid #e2e0d6;
         }
 
         .profile-info h1 {
             font-size: 32px;
             font-weight: 700;
             color: #111;
+            letter-spacing: -0.015em;
             margin-bottom: 8px;
         }
 
         .profile-info .subtitle {
             font-size: 18px;
-            color: #555;
+            color: #333;
             margin-bottom: 4px;
             font-style: italic;
         }
@@ -96,11 +97,10 @@
             color: #111;
             margin-bottom: 20px;
             padding-bottom: 8px;
-            border-bottom: 1px solid #ccc;
+            border-bottom: 1px solid #e2e0d6;
         }
 
         .bio-section {
-            font-size: 17px;
             color: #111;
         }
 
@@ -113,17 +113,6 @@
             color: #111;
         }
 
-        .bio-section ul {
-            margin: 0 0 16px 0;
-            padding-left: 0;
-            list-style: none;
-        }
-
-        .bio-section ul li {
-            margin-bottom: 8px;
-            padding-left: 20px;
-        }
-
         a {
             color: #0645ad;
             text-decoration: none;
@@ -131,123 +120,6 @@
 
         a:hover {
             color: #0b0080;
-        }
-
-        .publications ol {
-            list-style: none;
-            counter-reset: publication-counter;
-            padding-left: 0;
-        }
-
-        .publications li {
-            counter-increment: publication-counter;
-            margin-bottom: 20px;
-            padding-left: 32px;
-            position: relative;
-        }
-
-        .publications li:before {
-            content: counter(publication-counter);
-            position: absolute;
-            left: 0;
-            top: 0;
-            font-weight: 700;
-            color: #555;
-            font-size: 15px;
-        }
-
-        .pub-title {
-            font-weight: 700;
-            color: #111;
-            margin-bottom: 4px;
-            line-height: 1.4;
-        }
-
-        .pub-authors {
-            color: #555;
-            font-size: 16px;
-            margin-bottom: 4px;
-        }
-
-        .pub-venue {
-            color: #555;
-            font-style: italic;
-            font-size: 16px;
-            margin-bottom: 8px;
-        }
-
-        .pub-links {
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-        }
-
-        .pub-link {
-            display: inline-block;
-            padding: 3px 10px;
-            font-size: 13px;
-            border-radius: 3px;
-            text-decoration: none;
-            font-weight: 500;
-            border: 1px solid;
-        }
-
-        .pub-link.pdf {
-            background: #f9fafb;
-            color: #374151;
-            border-color: #d1d5db;
-        }
-
-        .pub-link.pdf:hover {
-            background: #f3f4f6;
-        }
-
-        .pub-link.code {
-            background: #eff6ff;
-            color: #1e40af;
-            border-color: #bfdbfe;
-        }
-
-        .pub-link.code:hover {
-            background: #dbeafe;
-        }
-
-        .pub-link.data {
-            background: #f0fdf4;
-            color: #166534;
-            border-color: #bbf7d0;
-        }
-
-        .pub-link.data:hover {
-            background: #dcfce7;
-        }
-
-        .pub-link.supplement {
-            background: #faf5ff;
-            color: #6b21a8;
-            border-color: #e9d5ff;
-        }
-
-        .pub-link.supplement:hover {
-            background: #f3e8ff;
-        }
-
-        .pub-link.poster {
-            background: #fef3c7;
-            color: #92400e;
-            border-color: #fde68a;
-        }
-
-        .pub-link.poster:hover {
-            background: #fde047;
-        }
-
-        footer {
-            margin-top: 80px;
-            padding-top: 40px;
-            border-top: 1px solid #e5e7eb;
-            color: #6b7280;
-            font-size: 14px;
         }
 
         @media (max-width: 768px) {
@@ -304,136 +176,20 @@
                 </p>
 
                 <p>
-                    <strong>Academia.</strong> Before finance, I spent four years in the Department of Computer Science at Cornell University, serving as an Assistant Professor for three years following a one-year postdoc. My research focused on designing numerical methods and algorithmic frameworks to enable new, better, and bigger analyses of complex data. These articles highlight the main ideas of this research:
-                </p>
-                <ul>
-                    <li><a href="https://www.quantamagazine.org/how-big-data-carried-graph-theory-into-new-dimensions-20210819/">How Big Data Carried Graph Theory Into New Dimensions</a>, Quanta Magazine</li>
-                    <li><a href="https://www.siam.org/publications/siam-news/articles/higher-order-network-analysis-takes-off-fueled-by-old-ideas-and-new-data">Higher-order Network Analysis Takes Off, Fueled by Old Ideas and New Data</a>, SIAM News</li>
-                </ul>
-
-                <p>
-                    This work was recognized with an NSF CAREER Award, a KDD best paper award, a JP Morgan Chase AI Faculty Award, and the Gene Golub Doctoral Dissertation Award, and was supported by federal research grants from the ARO and the NSF. I published in leading venues including Science, Science Advances, PNAS, and SIAM Review, as well as top machine learning and data science conferences like NeurIPS, ICML, ICLR, KDD, and WWW. I also taught courses spanning data science, machine learning, network science, matrix computations, and numerical optimization. Throughout this, I mentored postdocs, PhD students, and undergraduate researchers who have gone on to faculty positions, industry roles at companies like Meta and Microsoft Research, and top PhD programs.
+                    <strong>Academia.</strong> Before finance, I spent four years in the Department of Computer Science at Cornell University &mdash; three as an Assistant Professor, one as a postdoc. My research designed numerical methods and algorithmic frameworks for better and bigger analyses of complex data, backed by grants from the ARO and NSF. I also taught classes covering data science, machine learning, matrix computations, and numerical optimization.
                 </p>
 
                 <p>
-                    <strong>Education.</strong> Prior to Cornell, I spent nine formative years in the <a href="https://en.wikipedia.org/wiki/San_Francisco_Bay_Area">Bay Area</a>, where I completed my PhD and MS in computational mathematics at Stanford University and my BS in EECS and BA in applied math at UC Berkeley. During summers, I interned at Google four times, as well as at Sandia National Laboratories and HP Labs, gaining experience across industry research and large-scale systems.
+                    The research was published in leading journals including Science, PNAS, and SIAM Review and at top conferences like NeurIPS, ICML, ICLR, KDD, and WWW; earned an NSF CAREER Award, a KDD Best Paper Award, and a JP Morgan Chase AI Faculty Award; and was covered in <a href="https://www.quantamagazine.org/how-big-data-carried-graph-theory-into-new-dimensions-20210819/">Quanta Magazine</a>, <a href="https://www.siam.org/publications/siam-news/articles/higher-order-network-analysis-takes-off-fueled-by-old-ideas-and-new-data">SIAM News</a>, <a href="https://syncedreview.com/2020/11/04/cornell-facebook-ai-simplified-graph-learning-approach-outperforms-sota-gnns/">Synced</a>, and <a href="https://www.futurity.org/algorithm-rap-collaboration-1960382/">Futurity</a>. As part of this research, I mentored postdocs, PhD students, and undergraduates who have gone on to faculty positions, AI-based industry roles, and top PhD programs.
+                </p>
+
+                <p>
+                    <strong>Education.</strong> Prior to Cornell, I spent nine formative years in the <a href="https://en.wikipedia.org/wiki/San_Francisco_Bay_Area">Bay Area</a>, where I completed my PhD and MS in computational mathematics at Stanford and my BS in EECS and BA in applied math at UC Berkeley. During summers, I interned at Google four times, as well as at Sandia National Laboratories and HP Labs, gaining experience across industry research and large-scale systems.
                 </p>
 
                 <p>
                     <strong>The Early Years.</strong> I was born and raised in and around Madison, Wisconsin. I like to think that I maintain my <a href="https://en.wikipedia.org/wiki/Midwestern_United_States">Midwestern</a> values.
                 </p>
-            </section>
-
-            <section class="publications">
-                <h2>Selected Publications</h2>
-                <p style="margin-bottom: 20px; color: #555;">A complete list of publications is available in my <a href="cv/cv.pdf">CV</a>.</p>
-                <ol>
-                    <li>
-                        <div class="pub-title">Higher-order organization of complex networks</div>
-                        <div class="pub-authors">Austin R. Benson, David F. Gleich, Jure Leskovec</div>
-                        <div class="pub-venue">Science, 2016</div>
-                        <div class="pub-links">
-                            <a href="papers/higher-order-science2016.pdf" class="pub-link pdf">PDF</a>
-                            <a href="papers/higher-order-SM-science2016.pdf" class="pub-link supplement">Supplement</a>
-                            <a href="http://snap.stanford.edu/higher-order/code.html" class="pub-link code">Code</a>
-                            <a href="http://snap.stanford.edu/higher-order/data.html" class="pub-link data">Data</a>
-                        </div>
-                    </li>
-
-                    <li>
-                        <div class="pub-title">Simplicial closure and higher-order link prediction</div>
-                        <div class="pub-authors">Austin R. Benson, Rediet Abebe, Michael T. Schaub, Ali Jadbabaie, Jon Kleinberg</div>
-                        <div class="pub-venue">Proceedings of the National Academy of Sciences (PNAS), 2018</div>
-                        <div class="pub-links">
-                            <a href="papers/ScHoLP-PNAS-2018.pdf" class="pub-link pdf">PDF</a>
-                            <a href="papers/ScHoLP-PNAS-SI-2018.pdf" class="pub-link supplement">Supplement</a>
-                            <a href="https://github.com/arbenson/ScHoLP-Tutorial" class="pub-link code">Code</a>
-                            <a href="https://www.cs.cornell.edu/~arb/data/index.html#hon" class="pub-link data">Data</a>
-                        </div>
-                    </li>
-
-                    <li>
-                        <div class="pub-title">A Unifying Generative Model for Graph Learning Algorithms: Label Propagation, Graph Convolutions, and Combinations</div>
-                        <div class="pub-authors">Junteng Jia, Austin R. Benson</div>
-                        <div class="pub-venue">SIAM Journal on Mathematics of Data Science (SIMODS), 2022</div>
-                        <div class="pub-links">
-                            <a href="https://arxiv.org/abs/2101.07730" class="pub-link pdf">PDF</a>
-                            <a href="https://github.com/000Justin000/GaussianMRF" class="pub-link code">Code</a>
-                            <a href="https://github.com/000Justin000/GaussianMRF" class="pub-link data">Data</a>
-                        </div>
-                    </li>
-
-                    <li>
-                        <div class="pub-title">Combining Label Propagation and Simple Models Out-performs Graph Neural Networks</div>
-                        <div class="pub-authors">Qian Huang, Horace He, Abhay Singh, Ser-Nam Lim, Austin R. Benson</div>
-                        <div class="pub-venue">International Conference on Learning Representations (ICLR), 2021</div>
-                        <div class="pub-links">
-                            <a href="papers/simple-LP-ICLR-2021.pdf" class="pub-link pdf">PDF</a>
-                            <a href="https://github.com/Chillee/CorrectAndSmooth" class="pub-link code">Code</a>
-                        </div>
-                    </li>
-
-                    <li>
-                        <div class="pub-title">Choosing to grow a graph: Modeling network formation as discrete choice</div>
-                        <div class="pub-authors">Jan Overgoor, Austin R. Benson, Johan Ugander</div>
-                        <div class="pub-venue">The Web Conference (WWW), 2019</div>
-                        <div class="pub-links">
-                            <a href="papers/choosing-to-grow-WWW-2019.pdf" class="pub-link pdf">PDF</a>
-                            <a href="https://github.com/janovergoor/choose2grow/" class="pub-link code">Code</a>
-                            <a href="posters/c2g-WWW-2019-poster.pdf" class="pub-link poster">Poster</a>
-                        </div>
-                    </li>
-
-                    <li>
-                        <div class="pub-title">Random Walks on Simplicial Complexes and the normalized Hodge 1-Laplacian</div>
-                        <div class="pub-authors">Michael T. Schaub, Austin R. Benson, Paul Horn, Gabor Lippner, Ali Jadbabaie</div>
-                        <div class="pub-venue">SIAM Review, 2020</div>
-                        <div class="pub-links">
-                            <a href="papers/normalized-hodge-SIREV-2020.pdf" class="pub-link pdf">PDF</a>
-                        </div>
-                    </li>
-
-                    <li>
-                        <div class="pub-title">Hypergraph Cuts with General Splitting Functions</div>
-                        <div class="pub-authors">Nate Veldt, Austin R. Benson, Jon Kleinberg</div>
-                        <div class="pub-venue">SIAM Review, 2022</div>
-                        <div class="pub-links">
-                            <a href="http://arxiv.org/abs/2001.02817" class="pub-link pdf">PDF</a>
-                        </div>
-                    </li>
-
-                    <li>
-                        <div class="pub-title">On the relevance of irrelevant alternatives</div>
-                        <div class="pub-authors">Austin R. Benson, Ravi Kumar, Andrew Tomkins</div>
-                        <div class="pub-venue">The World Wide Web Conference (WWW), 2016</div>
-                        <div class="pub-links">
-                            <a href="papers/iia-www2016.pdf" class="pub-link pdf">PDF</a>
-                        </div>
-                    </li>
-
-                    <li>
-                        <div class="pub-title">The spacey random walk: a stochastic process for higher-order data</div>
-                        <div class="pub-authors">Austin R. Benson, David F. Gleich, Lek-Heng Lim</div>
-                        <div class="pub-venue">SIAM Review, 2017</div>
-                        <div class="pub-links">
-                            <a href="papers/spacey-random-walks-sirev-2017.pdf" class="pub-link pdf">PDF</a>
-                            <a href="https://github.com/arbenson/spacey-random-walks" class="pub-link code">Code</a>
-                            <a href="https://www.cs.cornell.edu/~arb/data/index.html#taxi" class="pub-link data">Data</a>
-                        </div>
-                    </li>
-
-                    <li>
-                        <div class="pub-title">Motifs in temporal networks</div>
-                        <div class="pub-authors">Ashwin Paranjape, Austin R. Benson, Jure Leskovec</div>
-                        <div class="pub-venue">The International Conference on Web Search and Data Mining (WSDM), 2017</div>
-                        <div class="pub-links">
-                            <a href="papers/temporal-motifs-wsdm2017.pdf" class="pub-link pdf">PDF</a>
-                            <a href="http://snap.stanford.edu/temporal-motifs/code.html" class="pub-link code">Code</a>
-                            <a href="http://snap.stanford.edu/temporal-motifs/data.html" class="pub-link data">Data</a>
-                            <a href="posters/temporal-motifs-wsdm-2017-poster.pdf" class="pub-link poster">Poster</a>
-                        </div>
-                    </li>
-                </ol>
             </section>
         </main>
     </div>
