@@ -4,6 +4,21 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Austin R. Benson</title>
+    <meta name="description" content="Austin R. Benson — quant finance researcher in New York City. Previously a computer science professor at Cornell.">
+
+    <!-- Open Graph / social cards -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Austin R. Benson">
+    <meta property="og:description" content="Quant finance researcher in New York City. Previously a computer science professor at Cornell.">
+    <meta property="og:url" content="https://arbenson.github.io/">
+    <meta property="og:image" content="https://arbenson.github.io/images/arb-2025-small.jpg">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Austin R. Benson">
+    <meta name="twitter:description" content="Quant finance researcher in New York City. Previously a computer science professor at Cornell.">
+    <meta name="twitter:image" content="https://arbenson.github.io/images/arb-2025-small.jpg">
+
+    <!-- Favicon: serif "A" on Tufte paper, inline SVG (no extra file) -->
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23fffff8'/%3E%3Ctext x='16' y='22' font-family='Palatino,Georgia,serif' font-size='13' font-weight='700' letter-spacing='0.5' text-anchor='middle' fill='%23a00000'%3EARB%3C/text%3E%3C/svg%3E">
 
     <style>
         * {
@@ -18,6 +33,7 @@
             line-height: 1.7;
             background: #fffff8;
             font-size: 18px;
+            font-feature-settings: "liga" 1, "onum" 1, "kern" 1;
         }
 
         .container {
@@ -27,9 +43,7 @@
         }
 
         header {
-            margin-bottom: 44px;
-            border-bottom: 1px solid #e2e0d6;
-            padding-bottom: 28px;
+            margin-bottom: 56px;
         }
 
         .profile-section {
@@ -78,26 +92,19 @@
         }
 
         .contact-links a {
-            color: #0645ad;
+            color: #3b5b8c;
             text-decoration: none;
             font-size: 15px;
+            background-image: linear-gradient(currentColor, currentColor);
+            background-position: 0 100%;
+            background-repeat: no-repeat;
+            background-size: 0% 1px;
+            transition: color 0.18s ease, background-size 0.18s ease;
         }
 
         .contact-links a:hover {
-            color: #0b0080;
-        }
-
-        section {
-            margin-bottom: 40px;
-        }
-
-        h2 {
-            font-size: 20px;
-            font-weight: 700;
-            color: #111;
-            margin-bottom: 20px;
-            padding-bottom: 8px;
-            border-bottom: 1px solid #e2e0d6;
+            color: #2a4468;
+            background-size: 100% 1px;
         }
 
         .bio-section {
@@ -109,17 +116,27 @@
         }
 
         .bio-section strong {
-            font-weight: 700;
-            color: #111;
+            font-weight: 600;
+            color: #a00000;
+            font-variant: small-caps;
+            letter-spacing: 0.06em;
         }
 
-        a {
-            color: #0645ad;
+        /* Body links: muted slate-blue with an underline that strengthens on hover */
+        .bio-section a {
+            color: #3b5b8c;
             text-decoration: none;
+            background-image: linear-gradient(currentColor, currentColor);
+            background-position: 0 100%;
+            background-repeat: no-repeat;
+            background-size: 100% 1px;
+            transition: color 0.18s ease, background-size 0.18s ease;
+            padding-bottom: 1px;
         }
 
-        a:hover {
-            color: #0b0080;
+        .bio-section a:hover {
+            color: #2a4468;
+            background-size: 100% 2px;
         }
 
         @media (max-width: 768px) {
@@ -162,7 +179,7 @@
                     <div class="location">New York City</div>
                     <div class="contact-links">
                         <a href="mailto:arbenson@gmail.com">arbenson@gmail.com</a>
-                        <a href="cv/cv.pdf">CV / Resume</a>
+                        <a href="cv/cv.pdf">CV / resume</a>
                         <a href="https://scholar.google.com/citations?user=BzOqNoQAAAAJ&hl=en">Google Scholar</a>
                     </div>
                 </div>
@@ -172,7 +189,7 @@
         <main>
             <section class="bio-section">
                 <p>
-                    <strong>Quant Finance.</strong> Since 2021, I have been a quant finance researcher. Most recently, I was in the systematic equities group at DE Shaw (2021-2025, VP 24-25). Right now, I'm on a non-compete period before joining a new firm in fall 2026.
+                    <strong>Quant Finance.</strong> Since 2021, I have been a quant finance researcher. Due to IP constraints, I can't really talk about what I work on. Most recently, I was in the systematic equities group at DE Shaw (2021&ndash;2025, VP 24&ndash;25). Right now, I'm on a non-compete period before joining a new firm in fall 2026.
                 </p>
 
                 <p>
